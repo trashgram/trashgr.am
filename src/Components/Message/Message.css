@@ -1,0 +1,365 @@
+/*
+ *  Copyright (c) 2018-present, Evgeny Nadymov
+ *
+ * This source code is licensed under the GPL v.3.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+b,
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+code {
+    font-size: 90%;
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+pre {
+    font-size: 90%;
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+    margin-top: 6px;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.message-short .message-select-tick {
+    margin-top: 0;
+}
+
+.message-content-row {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.message {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+}
+
+.message-out {
+}
+
+.message-body {
+    display: flex;
+    flex-direction: row;
+}
+
+.message:hover .message-select-tick {
+    opacity: 0.5;
+}
+
+.message-selected {
+    background: var(--color-accent-main22);
+}
+
+.message-selected:hover .message-select-tick {
+    opacity: 1;
+}
+
+.message-selected .message-select-tick {
+    opacity: 1;
+}
+
+@keyframes message-highlighted-animation {
+    0% {
+        background: var(--color-accent-main22);
+    }
+    100% {
+        background: transparent;
+    }
+}
+
+.message-highlighted {
+    animation: message-highlighted-animation 4s ease-out;
+}
+
+.message-padding {
+    min-width: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-tile-padding {
+    min-width: var(--tile-size-small);
+}
+
+.message-wrapper {
+    max-width: 784px;
+    padding: 5px 6px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.message:not(.message-out) .message-wrapper {
+    transform-origin: 25% 50%;
+}
+
+.message.message-out .message-wrapper {
+    transform-origin: 75% 50%;
+}
+
+.shook {
+    animation: shake-animation 500ms;
+}
+
+@keyframes shake-animation {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    20% {
+        transform: rotate(3deg) scale(0.98);
+    }
+    40% {
+        transform: rotate(-3deg) scale(0.96);
+    }
+    60% {
+        transform: rotate(3deg) scale(0.96);
+    }
+    80% {
+        transform: rotate(-3deg) scale(0.98);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.message-out .message-wrapper {
+    flex-direction: row-reverse;
+}
+
+.message-top .message-wrapper {
+    padding: 5px 6px 2px;
+}
+
+.message-middle .message-wrapper {
+    padding: 3px 6px 2px;
+}
+
+.message-bottom .message-wrapper {
+    padding: 3px 6px 5px;
+}
+
+.message-content {
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+    /*flex-grow: 1;*/
+    /*flex-shrink: 1;*/
+    /*overflow: hidden;*/
+    max-width: 560px;
+    min-height: var(--tile-size-small);
+    box-sizing: border-box;
+}
+
+.message.message-out .message-content:not(.message-bubble) {
+    display: flex;
+    align-items: flex-end;
+}
+
+.message:not(.message-out) .message-content:not(.message-bubble) {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-bubble {
+    border-radius: 12px 12px 12px 0;
+    padding: 6px 9px;
+    box-shadow: 0 1px 2px 0 rgba(16, 35, 47, 0.15);
+    background: var(--message-in-background);
+    overflow: hidden;
+}
+
+.message-short .message-bubble {
+    border-radius: 12px;
+}
+
+.message-top .message-bubble:not(.message-bubble-out) {
+    border-radius: 12px 12px 12px 6px;
+}
+
+.message-middle .message-bubble:not(.message-bubble-out) {
+    border-radius: 6px 12px 12px 6px;
+}
+
+.message-bottom .message-bubble:not(.message-bubble-out) {
+    border-radius: 6px 12px 12px 0;
+}
+
+.message-top .message-bubble.message-bubble-out {
+    border-radius: 12px 12px 6px 12px;
+}
+
+.message-middle .message-bubble.message-bubble-out {
+    border-radius: 12px 6px 6px 12px;
+}
+
+.message-bottom .message-bubble.message-bubble-out {
+    border-radius: 12px 6px 0 12px;
+}
+
+.message:not(.message-out):not(.message-bubble-hidden) .user-tile::before,
+.message:not(.message-out):not(.message-bubble-hidden) .chat-tile::before {
+    background: var(--message-in-background);
+    position: absolute;
+    right: 0;
+    mask: url(../../Assets/bubble-tail-left.svg);
+    bottom: -3px;
+    width: 11px;
+    height: 20px;
+    content: '';
+    transform: translate(7px, -2px);
+}
+
+.message.message-out:not(.message-bubble-hidden) .user-tile:not(.tile-poll)::before,
+.message.message-out:not(.message-bubble-hidden) .chat-tile::before {
+    background: var(--message-out-background);
+    position: absolute;
+    left: 0;
+    mask: url(../../Assets/bubble-tail-left.svg);
+    bottom: -3px;
+    width: 11px;
+    height: 20px;
+    content: '';
+    transform: translate(-7px, -2px) scaleX(-1);
+}
+
+.message-bubble-out {
+    background: var(--message-out-background);
+    border-radius: 12px 12px 0 12px;
+}
+
+.message-bubble-out::after {
+    background: var(--message-out-background);
+}
+
+.message-short .message-bubble::after {
+    content: none;
+}
+
+.message-short .message-content {
+    margin-left: 38px;
+    margin-right: 38px;
+}
+
+.message-title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    font-size: 14px;
+    line-height: normal;
+}
+
+.message-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.message-text-1emoji {
+    font-size: 4em;
+    line-height: normal;
+}
+
+.message-text-2emoji {
+    font-size: 3em;
+    line-height: normal;
+}
+
+.message-text-3emoji {
+    font-size: 2em;
+    line-height: normal;
+}
+
+.message-body {
+    overflow: hidden;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.message-select-tick {
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    opacity: 0;
+    align-self: center;
+    color: white;
+    background: var(--color-accent-main);
+}
+
+.messages-list-selection-active .message-wrapper {
+    pointer-events: none;
+}
+
+.touch-ripple-current-color {
+    color: currentColor;
+}
+
+.message-control {
+    color: var(--message-in-control);
+    border-color: var(--message-in-control-border);
+}
+
+.message-control:hover {
+    background-color: var(--message-in-control-hover);
+    border-color: var(--message-in-control-border-hover);
+}
+
+.message-control-disabled {
+    color: var(--text-disabled);
+}
+
+.message-out .message-control {
+    color: var(--message-out-control);
+    border-color: var(--message-out-control-border);
+}
+
+.message-out .message-control:hover {
+    background-color: var(--message-out-control-hover);
+    border-color: var(--message-out-control-border-hover);
+}
+
+.message-out .message-control-disabled {
+    color: var(--text-disabled);
+}

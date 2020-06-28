@@ -1,0 +1,29 @@
+/*
+ *  Copyright (c) 2018-present, Evgeny Nadymov
+ *
+ * This source code is licensed under the GPL v.3.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.sticker {
+    display: block;
+    border-radius: 8px;
+    user-select: none;
+    background: transparent;
+    position: relative;
+    /*transform: translateZ(0);*/
+}
+
+.sticker-image {
+    user-select: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}

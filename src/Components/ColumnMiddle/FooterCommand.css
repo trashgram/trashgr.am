@@ -1,0 +1,27 @@
+/*
+ *  Copyright (c) 2018-present, Evgeny Nadymov
+ *
+ * This source code is licensed under the GPL v.3.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.footer-command-wrapper {
+    margin-top: 8px;
+    text-align: center;
+    height: 75px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border);
+    background: var(--panel-background);
+}
+
+.footer-command-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.footer-command-button {
+    margin: 14px;
+    min-width: 100px;
+}

@@ -1,0 +1,43 @@
+/*
+ *  Copyright (c) 2018-present, Evgeny Nadymov
+ *
+ * This source code is licensed under the GPL v.3.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.voice-note-slider {
+    transform: translate(0, 14px);
+}
+
+.voice-note-slider-component {
+    color: var(--color-accent-main);
+}
+
+.voice-note-slider-component-hidden {
+    opacity: 0;
+}
+
+.voice-note-slider-track {
+    transition: width 0ms linear 0ms, height 0ms linear 0ms, transform 0ms linear 0ms;
+}
+
+.voice-note-slider-thumb {
+    transition: transform 0ms linear 0ms, box-shadow 0ms linear 0ms;
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.voice-note-slider-thumb:hover {
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.voice-note-slider-thumb.voice-note-slider-active {
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.voice-note-slider-thumb-wrapper {
+    transition: transform 0ms linear 0ms;
+}
+
+.message-bubble-out .voice-note-slider-component {
+    color: var(--message-out-meta-color);
+}
